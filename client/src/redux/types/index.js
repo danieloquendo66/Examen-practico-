@@ -1,0 +1,4 @@
+export const OBTENER_CUPONES = "OBTENER_CUPONES";
+export const NUEVO_CUPON = "NUEVO_CUPON";
+export const EDITAR_CUPON = "EDITAR_CUPON";
+export const ELIMINAR_CUPON = "ELIMINAR_CUPON";
