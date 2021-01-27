@@ -11,7 +11,7 @@ app.use(cors());
 db.sync({ force: false });
 app.use(morgan("combined"));
 app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(routes);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
