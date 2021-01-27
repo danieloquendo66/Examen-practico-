@@ -7,13 +7,31 @@ import {
   ELIMINAR_CUPON,
 } from "../types";
 
-export const obtenerCupones = () => async (dispatch) => {
+export const obtenerCupones = (key) => async (dispatch) => {
   try {
     const response = await axios.get("http://localhost:4000/cupon/");
-    dispatch({
-      type: OBTENER_CUPONES,
-      payload: response.data,
-    });
+
+    switch (key) {
+      case "canjeados":
+        dispatch({
+          type: OBTENER_CUPONES,
+          payload: response.data.filter((cupon) => cupon.canjeado === true),
+        });
+        break;
+      case "no canjeados":
+        dispatch({
+          type: OBTENER_CUPONES,
+          payload: response.data.filter((cupon) => cupon.canjeado === false),
+        });
+        break;
+
+      default:
+        dispatch({
+          type: OBTENER_CUPONES,
+          payload: response.data,
+        });
+        break;
+    }
   } catch (error) {
     console.log(error);
   }
